@@ -2,13 +2,18 @@
 const rollButton = document.getElementById("rollButton");
 const diceValueInput = document.getElementById("diceValue");
 
-// roll the dice and display the result
+// Function to roll the dice and display the result
 function rollDice() {
-    // Generate a random number between 1 and 6
-    const randomValue = Math.floor(Math.random() * 6) + 1;
-    
-    // Displayin the input field
-    diceValueInput.value = randomValue;
+    // Make an API call to the /api/rollDice endpoint on your Azure-hosted server
+    fetch('https://node-js-on-azure-amk.azurewebsites.net/')
+        .then((response) => response.json())
+        .then((data) => {
+            // Display the result in the input field
+            diceValueInput.value = data.diceValue;
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
 }
 
 // Automatically roll the dice when the page is loaded
