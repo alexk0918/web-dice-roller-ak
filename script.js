@@ -4,8 +4,8 @@ const diceValueInput = document.getElementById("diceValue");
 
 // Function to roll the dice and display the result
 function rollDice() {
-    // Make an API call to the /api/rollDice endpoint on your Azure-hosted server
-    fetch('https://node-js-on-azure-amk.azurewebsites.net/')
+    // Make an API call to the /rollDice endpoint on your Azure-hosted server
+    fetch('/rollDice')
         .then((response) => response.json())
         .then((data) => {
             // Display the result in the input field
